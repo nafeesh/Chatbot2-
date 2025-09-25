@@ -12,7 +12,6 @@ from langchain_core.chat_history import BaseChatMessageHistory
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_ollama import ChatOllama, OllamaEmbeddings
 from langchain_core.runnables.history import RunnableWithMessageHistory
-# from langchain_huggingface import HuggingFaceEndpointEmbeddings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.document_loaders import PyPDFLoader
 
@@ -57,7 +56,7 @@ if api_key:
             docs=loader.load()
             documents.extend(docs)
 
-    # Split and create embeddings for the documents
+    # Split and create embeddings for the documents 
         text_splitter = RecursiveCharacterTextSplitter(chunk_size=2048, chunk_overlap=500)
         splits = text_splitter.split_documents(documents)
         vectorstore = FAISS.from_documents(documents=splits, embedding=embeddings)
